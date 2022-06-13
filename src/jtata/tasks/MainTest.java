@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 class MainTest {
 
     Main tests = new Main();
+
     @Test
     void add() {
+
         // Task 1
         assertEquals(23, tests.Add("11,12"));
         assertEquals(0, tests.Add(""));
@@ -28,5 +30,18 @@ class MainTest {
         assertEquals(-1, tests.Add("1\n3,4,,"));
         assertEquals(-1, tests.Add(",,"));
 
+        // Task 4
+        assertEquals(39, tests.Add("//-\n1-2-34-2"));
+        assertEquals(-1, tests.Add("//-\n1-2+34-2"));
+        assertEquals(-1, tests.Add("//\n1-2-34-2"));
+        assertEquals(39, tests.Add("///\n1/2/34/2"));
+        assertEquals(-1, tests.Add("///\n1/2\n34,2"));
+        assertEquals(-1, tests.Add("///\n"));
+        assertEquals(1, tests.Add("///\n1"));
+        assertEquals(-1, tests.Add("/3\n13532"));
+        assertEquals(-1, tests.Add("//313532"));
+        assertEquals(-1, tests.Add("//-31-35-32"));
+
     }
+
 }
