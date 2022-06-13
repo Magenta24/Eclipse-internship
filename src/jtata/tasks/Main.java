@@ -6,17 +6,27 @@ public class Main {
         if(numbersString == "")
             return 0;
 
-        String[] numbers = numbersString.split(",");
+        String[] numbers = numbersString.split("[\n,]",-1);
         int sum = 0;
 
-        for(int i=0;i<numbers.length;i++) {
-            sum += Integer.parseInt(numbers[i]);
+        try {
+
+            for(int i=0;i<numbers.length;i++) {
+                sum += Integer.parseInt(numbers[i]);
+            }
+//            System.out.println(numbers.length);
+            return sum;
+
+        }catch (NumberFormatException e) {
+
+            System.out.println("Invalid input!");
+            return -1;
         }
 
-        return sum;
     }
 
     public static void main(String[] args) {
-
+//        System.out.println(Add("2\n,"));
+//        System.out.println(Add("22,,"));
     }
 }
