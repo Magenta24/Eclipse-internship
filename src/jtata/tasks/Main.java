@@ -6,13 +6,15 @@ public class Main {
 
     private static final String INVALID_INPUT_MSG = "Invalid Input!";
 
-    public static int Add(String numbersString) {
+    public static int Add(String numbersString) throws Exception {
 
         if (numbersString == "")
             return 0;
 
         String delimiter = "[\n,]";
         int sum = 0;
+        boolean isNegative = false;
+        String negativeNumMsg = "";
 
         try {
 
@@ -35,10 +37,33 @@ public class Main {
             // splitting the string into numbers
             String[] numbers = numbersString.split(delimiter, -1);
 
+            int number;
+
             for (int i = 0; i < numbers.length; i++) {
-                sum += Integer.parseInt(numbers[i]);
+
+                number = Integer.parseInt(numbers[i]);
+
+                // check if the number is negative and creating a message
+                if (number < 0) {
+
+                    if (isNegative == false) {
+                        isNegative = true;
+                        negativeNumMsg += "negatives not allowed: ";
+                    }
+
+                    negativeNumMsg = negativeNumMsg + number + " ";
+                    continue;
+                }
+
+                sum += number;
 
             }
+
+            if(isNegative == true){
+                throw new Exception(negativeNumMsg);
+            }
+
+
         } catch (IndexOutOfBoundsException e) {
 
             System.out.println(INVALID_INPUT_MSG);
@@ -55,6 +80,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
 
     }
 }
