@@ -9,15 +9,14 @@ public class Main {
         String[] numbers = numbersString.split(",");
         int sum = 0;
 
-        if(numbers.length == 1)
-            sum = Integer.parseInt(numbers[0]);
-        else
-            sum = Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
+        for(int i=0;i<numbers.length;i++) {
+            sum += Integer.parseInt(numbers[i]);
+        }
 
         return sum;
     }
 
     public static void main(String[] args) {
-        
+
     }
 }
