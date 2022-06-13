@@ -94,11 +94,6 @@ class MainTest {
         assertEquals(-1, tests.Add("//-31-35-32"));
     }
 
-    @Test
-    void addTask5NoNegativesAccepted() throws Exception {
-        // Task 5
-
-    }
 
     @Test
     void addTask5TestingForException() throws Exception {
@@ -121,6 +116,15 @@ class MainTest {
 
         actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains("negatives not allowed: -12 -3 -1 -4 "));
+
+    }
+
+    @Test
+    void addTask6IgnoringNumbersGreaterThan1000() throws Exception {
+        // Task 6
+        assertEquals(2, tests.Add("//-\n1001-2-3400-2000"));
+        assertEquals(0, tests.Add("1006,2675\n1234"));
+        assertEquals(1, tests.Add("1006\n2675\n1234\n1"));
 
     }
 

@@ -11,16 +11,17 @@ public class Main {
         if (numbersString == "")
             return 0;
 
-        String delimiter = "[\n,]";
+        String delimiter = "[\n,]";     // default delimiter
         int sum = 0;
-        boolean isNegative = false;
-        String negativeNumMsg = "";
+        boolean isNegative = false;     // task 5 - indicating if negative numbers occurred
+        String negativeNumMsg = "";     // message for the exception
 
         try {
 
             // checking for the delimiter
             if (numbersString.charAt(0) == '/') {
 
+                // returning -1 if after first slash there is no /[delimiter]\n
                 if ((numbersString.charAt(1) == '/') && (numbersString.charAt(3) == '\n')) {
 
                     delimiter = "" + numbersString.charAt(2);
@@ -37,13 +38,13 @@ public class Main {
             // splitting the string into numbers
             String[] numbers = numbersString.split(delimiter, -1);
 
-            int number;
 
+            int number;     // a single number from the string
             for (int i = 0; i < numbers.length; i++) {
 
                 number = Integer.parseInt(numbers[i]);
 
-                // check if the number is negative and creating a message
+                // task 5 - check if the number is negative and creating a message
                 if (number < 0) {
 
                     if (isNegative == false) {
@@ -55,11 +56,16 @@ public class Main {
                     continue;
                 }
 
+                // task 6 - ignoring numbers greater than 1000
+                if (number > 1000)
+                    continue;
+
                 sum += number;
 
             }
 
-            if(isNegative == true){
+            // task 5 - throwing exception if negative numbers occurred
+            if (isNegative == true) {
                 throw new Exception(negativeNumMsg);
             }
 
